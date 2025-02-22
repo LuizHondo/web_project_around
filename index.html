@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="vendor/normalize.css" />
+    <link rel="stylesheet" href="vendor/fonts.css" />
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="/images/logo.svg"
+          alt="Logotipo Around US"
+        />
+      </header>
+      <section class="profile">
+        <div class="profile__info">
+          <img src="images/avatar.png" alt="" class="profile__avatar" />
+          <div class="profile__info__text">
+            <div class="profile__name">
+              <h1 class="profile__name__text">Jacques Cousteau</h1>
+              <button class="profile__name__edit-button" aria-label="Editar">
+                <img
+                  src="images/edit-button.png"
+                  alt=""
+                  class="profile__name__edit-button-image"
+                />
+              </button>
+            </div>
+            <p class="profile__description">Explorador</p>
+          </div>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+      <section class="elements">
+        <div class="elements__element">
+          <img
+            src="images/post1.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar dasdasdadasdasdasd 1</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+        <div class="elements__element">
+          <img
+            src="images/post2.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar Bacana 1</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+        <div class="elements__element">
+          <img
+            src="images/post3.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar Bacana 1</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+        <div class="elements__element">
+          <img
+            src="images/post4.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar Bacana 1</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+        <div class="elements__element">
+          <img
+            src="images/post5.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar Bacana 1</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+        <div class="elements__element">
+          <img
+            src="images/post6.png"
+            alt="Imagem da postagem"
+            class="elements__image"
+          />
+          <div class="elements__info">
+            <p class="elements__text">Lugar Bacana 6</p>
+            <button
+              aria-label="curtir"
+              type="button"
+              class="elements__heart"
+            ></button>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer__copyright">&#169; 2024 Around The U.S.</p>
+      </footer>
+      <section class="popup popup--hidden">
+        <div class="popup__container">
+          <img
+            src="images/close-button.png"
+            class="popup__close-button"
+            alt="Fechar"
+          />
+          <form class="popup__form">
+            <p class="popup__text">Editar perfil</p>
+            <input
+              id="name"
+              type="text"
+              class="popup__form-elements popup__form__element-name"
+              placeholder="Nome"
+            />
+            <input
+              id="description"
+              type="text"
+              class="popup__form-elements popup__form__element-description"
+              placeholder="Sobre mim"
+            /><button aria-label="Salvar" class="popup__submit">Salvar</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

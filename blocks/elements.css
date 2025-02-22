@@ -1,0 +1,71 @@
+.elements {
+  display: grid;
+  grid-template-columns: 32.05% 32.05% 32.05%;
+  column-gap: 1.93%;
+  row-gap: 20px;
+  padding-top: 50px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.elements__element {
+  border-radius: 10px;
+  background-color: white;
+  border: solid black 1px;
+}
+.elements__image {
+  height: auto;
+  width: 100%;
+}
+.elements__info {
+  padding: 25px 15px 31px 21px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+.elements__text {
+  margin: 0;
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 92.55%;
+}
+.elements__heart {
+  width: 21px;
+  height: 19px;
+  position: relative;
+  bottom: 5px;
+  background-image: url(/images/heart-normal.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+.elements__heart:hover {
+  opacity: 0.5;
+}
+.elements__heart:active {
+  background-image: url(/images/heart-active.png);
+  opacity: 1;
+}
+@media screen and (max-width: 768px) {
+  .header__logo {
+    width: 126px;
+  }
+}
+@media screen and (max-width: 880px) {
+  .elements {
+    grid-template-columns: 33.75% 33.75%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .elements {
+    grid-template-columns: 100%;
+    padding: 36px 5.94% 0px;
+  }
+}
