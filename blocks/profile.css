@@ -19,7 +19,7 @@
   width: 120px;
   height: auto;
 }
-.profile__info__text {
+.profile__info-text {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -30,7 +30,7 @@
   align-items: center;
   gap: 30px;
 }
-.profile__name__text {
+.profile__name-text {
   font-weight: 500;
   font-size: 42px;
   line-height: 39px;
@@ -38,7 +38,7 @@
   white-space: nowrap;
   margin: 0;
 }
-.profile__name__edit-button {
+.profile__name-edit-button {
   width: 24px;
   height: 24px;
   background-color: black;
@@ -48,11 +48,11 @@
   align-items: center;
   justify-content: center;
 }
-.profile__name__edit-button:hover {
+.profile__name-edit-button:hover {
   opacity: 60%;
   cursor: pointer;
 }
-.profile__name__edit-button-image {
+.profile__name-edit-button-image {
   width: 10px;
   height: 10px;
   cursor: pointer;
@@ -90,26 +90,26 @@
   .profile__info {
     flex-direction: column;
   }
-  .profile__info__text {
+  .profile__info-text {
     align-items: center;
     gap: 14px;
   }
   .profile__name {
     gap: 20px;
   }
-  .profile__name__text {
+  .profile__name-text {
     width: 90%;
     font-size: 22px;
     line-height: 26.63px;
   }
-  .profile__name__edit-button {
+  .profile__name-edit-button {
     padding: 5.25px;
     width: 21px;
     height: 21px;
     position: relative;
     bottom: 1.25px;
   }
-  .profile__name__edit-button-image {
+  .profile__name-edit-button-image {
     width: 7.5px;
     height: 7.5px;
   }
@@ -136,14 +136,14 @@
   .profile__info {
     flex-direction: column;
   }
-  .profile__info__text {
+  .profile__info-text {
     align-items: center;
     gap: 14px;
   }
   .profile__name {
     gap: 10px;
   }
-  .profile__name__text {
+  .profile__name-text {
     font-family: Inter;
     font-weight: 500;
     font-size: 22px;
@@ -151,16 +151,12 @@
     letter-spacing: 0%;
     text-align: center;
   }
-  .profile__name__edit-button {
+  .profile__name-edit-button {
     padding: 5.25px;
     width: 18px;
     height: 18px;
     position: relative;
     bottom: 1.25px;
-  }
-  .profile__name__edit-button-image {
-    width: 7.5px;
-    height: 7.5px;
   }
   .profile__description {
     font-family: Inter;

@@ -2,10 +2,10 @@
 const popup = document.querySelector(".popup");
 const nameInput = document.querySelector("#name");
 const descriptionInput = document.querySelector("#description");
-const profileName = document.querySelector(".profile__name__text");
+const profileName = document.querySelector(".profile__name-text");
 const profileDescription = document.querySelector(".profile__description");
 const popupCloseButton = document.querySelector(".popup__close-button");
-const editButton = document.querySelector(".profile__name__edit-button-image");
+const editButton = document.querySelector(".profile__name-edit-button");
 const saveProfileButton = document.querySelector(".popup__submit");
 const profileForm = document.querySelector(".popup__form");
 // Functions
@@ -20,11 +20,11 @@ function setElements(evt) {
   closePopup();
 }
 function openPopup() {
-  popup.classList.remove("popup--hidden");
+  popup.classList.remove("popup_hidden");
   getElements();
 }
 function closePopup() {
-  popup.classList.add("popup--hidden");
+  popup.classList.add("popup_hidden");
 }
 getElements();
 
