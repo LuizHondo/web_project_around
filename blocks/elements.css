@@ -1,6 +1,6 @@
 .elements {
   display: grid;
-  grid-template-columns: 32.05% 32.05% 32.05%;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1.93%;
   row-gap: 20px;
   padding-top: 50px;
@@ -11,6 +11,7 @@
   border-radius: 10px;
   background-color: white;
   border: solid black 1px;
+  width: 282px;
 }
 .elements__image {
   height: auto;
@@ -53,19 +54,17 @@
   background-image: url(/images/heart-active.png);
   opacity: 1;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 880px) {
   .header__logo {
     width: 126px;
   }
-}
-@media screen and (max-width: 880px) {
   .elements {
-    grid-template-columns: 33.75% 33.75%;
+    grid-template-columns: auto auto;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .elements {
-    grid-template-columns: 100%;
+    grid-template-columns: auto;
     padding: 36px 5.94% 0px;
   }
 }
