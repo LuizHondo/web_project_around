@@ -1,3 +1,4 @@
+**Link da página:**``https://luizhondo.github.io/web_project_around/``
 **Around The U.S.**
 
 Uma aplicação web responsiva que exibe informações de perfil, publicações e permite editar os dados do perfil por meio de um popup. O projeto utiliza HTML, CSS e JavaScript para criar uma interface interativa.
@@ -12,24 +13,20 @@ Uma aplicação web responsiva que exibe informações de perfil, publicações 
 │   ├── page.css
 │   ├── popup.css
 │   ├── profile.css
-│
-├── images/              # Pasta para armazenar imagens do projeto
-│
+├── images/              # Imagens do projeto
 ├── pages/
 │   ├── index.css        # Estilos gerais do site
-│
 ├── scripts/
-│   ├── index.js         # Arquivo principal de interatividade (JS)
-│
+│   ├── index.js         # Interatividade (JS)
 ├── vendor/              # Dependências externas
-│   ├── fonts/           # Pacotes de fontes utilizados no projeto
+│   ├── fonts/           # Pacotes de fontes
 │   ├── fonts.css        # Estilos de fontes
 │   ├── normalize.css    # Reset de estilos padrão
-│
 ├── .gitignore           # Arquivos ignorados pelo Git
-├── .prettierignore      # Configuração do Prettier para formatação de código
-├── index.html           # Página principal com a estrutura HTML
+├── .prettierignore      # Configuração do Prettier
+├── index.html           # Página principal (HTML)
 ├── README.md            # Documentação do projeto
+
 
 🚀 **Funcionalidades**
 
