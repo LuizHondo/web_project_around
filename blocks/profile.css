@@ -124,6 +124,7 @@
   .profile__add-button {
     width: 60%;
     background-size: 16px;
+    min-width: 205px;
   }
 }
 

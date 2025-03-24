@@ -6,16 +6,42 @@
   padding-top: 50px;
   margin: 0 auto;
   justify-content: center;
+  min-height: 300px;
+  height: auto;
 }
 .elements__card {
   border-radius: 10px;
   background-color: white;
   border: solid black 1px;
   width: 282px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .elements__image {
-  height: auto;
-  width: 100%;
+  width: 282px;
+  height: 282px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg");
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.elements__delete {
+  padding: 0;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background-repeat: no-repeat;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url(../images/Trash.svg);
+  background-size: cover;
+  background-position: center;
+  width: 18px;
+  height: 19.3px;
 }
 .elements__info {
   padding: 25px 15px 31px 21px;
@@ -50,7 +76,7 @@
 .elements__heart:hover {
   opacity: 0.5;
 }
-.elements__heart:active {
+.elements__heart_active {
   background-image: url(/images/heart-active.png);
   opacity: 1;
 }

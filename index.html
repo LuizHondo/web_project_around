@@ -39,96 +39,24 @@
       </section>
 
       <section class="elements">
-        <div class="elements__card">
-          <img
-            src="images/post1.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Riacho na floresta</p>
+        <template id="elements__template-card">
+          <div class="elements__card">
+            <img alt="Imagem da postagem" class="elements__image" />
             <button
-              aria-label="curtir"
+              aria-label="deletar"
               type="button"
-              class="elements__heart"
+              class="elements__delete"
             ></button>
+            <div class="elements__info">
+              <p class="elements__text">**Error</p>
+              <button
+                aria-label="curtir"
+                type="button"
+                class="elements__heart"
+              ></button>
+            </div>
           </div>
-        </div>
-        <div class="elements__card">
-          <img
-            src="images/post2.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Twinpeaks</p>
-            <button
-              aria-label="curtir"
-              type="button"
-              class="elements__heart"
-            ></button>
-          </div>
-        </div>
-        <div class="elements__card">
-          <img
-            src="images/post3.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Pôr do Sol</p>
-            <button
-              aria-label="curtir"
-              type="button"
-              class="elements__heart"
-            ></button>
-          </div>
-        </div>
-        <div class="elements__card">
-          <img
-            src="images/post4.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Noite Estrelada</p>
-            <button
-              aria-label="curtir"
-              type="button"
-              class="elements__heart"
-            ></button>
-          </div>
-        </div>
-        <div class="elements__card">
-          <img
-            src="images/post5.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Lago show</p>
-            <button
-              aria-label="curtir"
-              type="button"
-              class="elements__heart"
-            ></button>
-          </div>
-        </div>
-        <div class="elements__card">
-          <img
-            src="images/post6.png"
-            alt="Imagem da postagem"
-            class="elements__image"
-          />
-          <div class="elements__info">
-            <p class="elements__text">Barquinhos lindos</p>
-            <button
-              aria-label="curtir"
-              type="button"
-              class="elements__heart"
-            ></button>
-          </div>
-        </div>
+        </template>
       </section>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2025 Luiz Hondo</p>
@@ -155,8 +83,36 @@
               class="popup__form-elements popup__form-element-description"
               placeholder="Sobre mim"
               required
-            /><button type="submit" aria-label="Salvar" class="popup__submit">
-              Salvar
+            />
+            <button aria-label="Salvar" class="popup__submit">Salvar</button>
+          </form>
+        </div>
+      </section>
+      <section class="new-place new-place_hidden">
+        <div class="new-place__container">
+          <img
+            src="images/close-button.png"
+            class="new-place__close-button"
+            alt="Fechar"
+          />
+          <form class="new-place__form">
+            <p class="new-place__text">Novo local</p>
+            <input
+              id="place-title"
+              type="text"
+              class="new-place__form-elements new-place__form-element-title"
+              placeholder="Título"
+              required
+            />
+            <input
+              id="place-url"
+              type="text"
+              class="new-place__form-elements new-place__form-element-url"
+              placeholder="Link da Imagem"
+              required
+            />
+            <button type="button" aria-label="Criar" class="new-place__submit">
+              Criar
             </button>
           </form>
         </div>
