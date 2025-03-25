@@ -54,30 +54,15 @@ function toggleNewPlace() {
 newPlaceCloseButton.addEventListener("click", toggleNewPlace);
 openNewPlaceButton.addEventListener("click", toggleNewPlace);
 
-/////////////////////////////////////////////////////////
-///////////////// Cria cartao com botao  ///////////////
-///////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//////////////// adiciona o image popup close button ///////
+///////////////////////////////////////////////////////////
 
-const buttonCreate = document.querySelector(".new-place__submit");
-const template = document.getElementById("elements__template-card");
-const elements = document.querySelector(".elements");
-
-const title = document.querySelector(".new-place__form-element-title");
-const url = document.querySelector(".new-place__form-element-url");
-
-function CreateCard() {
-  const cloneTemplate = template.content.cloneNode(true); ////// clona o template para nao modificar diretamente
-  cloneTemplate.querySelector(".elements__text").textContent = title.value; ////// altera os valores do titulo e do url
-  cloneTemplate.querySelector(".elements__image").src = url.value;
-  elements.append(cloneTemplate); ////// insere os valores do clone no layout
-  url.value = ""; ////// limpa os valores do input
-  title.value = ""; ////// limpa os valores do input
-  toggleNewPlace();
-  canRemoveCard();
-  canHeart();
+function closeImagePopup(){
+  document.querySelector(".image-popup").classList.add("image-popup_hidden")
 }
 
-buttonCreate.addEventListener("click", CreateCard);
+document.querySelector(".image-popup__close-button").addEventListener("click", closeImagePopup)
 
 ////////////////////////////////////////////////////////////////////////
 ///////////////// Adiciona cards que estão no array ///////////////////
@@ -87,69 +72,89 @@ const initialCards = [
   {
     name: "Vale de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
+    heart: false,
   },
   {
     name: "Lago Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
+    heart: false,
   },
   {
     name: "Montanhas Carecas",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
+    heart: false,
   },
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
+    heart: false,
   },
   {
     name: "Parque Nacional da Vanoise ",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
+    heart: false,
   },
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
+    heart: false,
   },
 ];
 
-////////////////////////////////////////////////////////////
-/////////////// Adiciona o array ao layout ////////////////
-//////////////////////////////////////////////////////////
+const buttonCreate = document.querySelector(".new-place__submit");
+const elements = document.querySelector(".elements__cards");
 
-for (let i = 0; i < initialCards.length; i++) {
-  const cloneTemplate = template.content.cloneNode(true);
-  cloneTemplate.querySelector(".elements__text").textContent =
-    initialCards[i].name;
-  cloneTemplate.querySelector(".elements__image").src = initialCards[i].link;
-  elements.append(cloneTemplate);
-}
+function renderCard() {
+  const renderedCards = initialCards;
+  elements.innerHTML = "";
+  for (let i = 0; i < renderedCards.length; i++) {
+    const template = document.getElementById("elements__template-card").content.cloneNode(true);
+    template.querySelector(".elements__image").addEventListener("click", function openImagePopup(){
+      document.querySelector(".image-popup__content").src = renderedCards[i].link;
+      document.querySelector(".image-popup__title").textContent = renderedCards[i].name;
+      document.querySelector(".image-popup").classList.remove("image-popup_hidden")
+    })
+    template.querySelector(".elements__text").textContent = renderedCards[i].name;
+    template.querySelector(".elements__image").src = renderedCards[i].link;
+    template.querySelector(".elements__delete").addEventListener("click",function removeCard(i){
+        renderedCards.splice(i,1) //remove do array
+        this.parentNode.remove() //remove do visual
+      }
+    )
+    heart = template.querySelector(".elements__heart");
+    if(initialCards[i].heart){
+      heart.classList.add("elements__heart_active")
+    }
 
-//////////////////////////////////////////////////////////////
-////////////// Deletar elementos com lixeira ////////////////
-////////////////////////////////////////////////////////////
-
-function canRemoveCard() {
-  const cards = document.querySelectorAll(".elements__delete");
-  cards.forEach(function (card) {
-    card.addEventListener("click", function () {
-      card.parentNode.remove();
+    heart.addEventListener("click", function heartToggle() {
+      renderedCards[i].heart = !renderedCards[i].heart;  // Alterna 'heart' no array
+      renderedCards[i].heart = this.classList.toggle("elements__heart_active")
     });
-  });
+    
+      
+    
+    elements.prepend(template);
+  }
 }
 
-canRemoveCard(); //Verifica os elementos existentes
-canHeart();
-////////////////////////////////////////////////////////////////
-///////////////// Heart alterna para heart active//////////////
-//////////////////////////////////////////////////////////////
-function canHeart() {
-  const heartButton = document.querySelectorAll(".elements__heart");
-  heartButton.forEach((heart) => {
-    heart.addEventListener("click", function () {
-      heart.classList.toggle("elements__heart_active");
-    });
-  });
+function addCard(){
+  const cardName = document.getElementById("place-title").value;
+  const cardLink = document.getElementById("place-link").value;
+  initialCards.push({
+    name: cardName,
+    link: cardLink,
+    heart: false
+  }) // Adiciona o card ao array
+  
+  
+  toggleNewPlace();
+  renderCard(); //Re renderiza os cards
+  document.getElementById("place-title").value = ""; // Limpa o input
+  document.getElementById("place-link").value = ""; // Limpa o input
+
 }
 
-////////////////////////////////////////////////////////////
-///////////// Criar popup window para imagens /////////////
-//////////////////////////////////////////////////////////
-////////Recriar as funcoes que manipulam os cards para que o createCard consiga lidar com os dados diretamente do array initialCards, Adicionar um heart:boolean ao array e if true{elements__heart-active},if false {elements__heart-active}. DeleteCard remove cards diretamente do array initialCards.
+
+buttonCreate.addEventListener("click",addCard)
+
+renderCard();

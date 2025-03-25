@@ -57,6 +57,7 @@
             </div>
           </div>
         </template>
+        <ul class="elements__cards"></ul>
       </section>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2025 Luiz Hondo</p>
@@ -100,14 +101,14 @@
             <input
               id="place-title"
               type="text"
-              class="new-place__form-elements new-place__form-element-title"
+              class="new-place__form-elements"
               placeholder="Título"
               required
             />
             <input
-              id="place-url"
+              id="place-link"
               type="text"
-              class="new-place__form-elements new-place__form-element-url"
+              class="new-place__form-elements"
               placeholder="Link da Imagem"
               required
             />
@@ -115,6 +116,21 @@
               Criar
             </button>
           </form>
+        </div>
+      </section>
+      <section class="image-popup image-popup_hidden">
+        <div class="image-popup__container">
+          <img
+            src="images/close-button.png"
+            class="image-popup__close-button"
+            alt="Fechar"
+          />
+          <img
+            src="https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg"
+            alt="Imagem"
+            class="image-popup__content"
+          />
+          <p class="image-popup__title">Sem título</p>
         </div>
       </section>
     </div>
