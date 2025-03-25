@@ -65,7 +65,7 @@ function closeImagePopup(){
 document.querySelector(".image-popup__close-button").addEventListener("click", closeImagePopup)
 
 ////////////////////////////////////////////////////////////////////////
-///////////////// Adiciona cards que estão no array ///////////////////
+///////////////// Elementos iniciais do Array ///////////////////
 //////////////////////////////////////////////////////////////////////
 
 const initialCards = [
@@ -101,41 +101,51 @@ const initialCards = [
   },
 ];
 
+//////////////////////////////////////////////////////////////////////////////
+////////////////// Renderizador de cartoes///////////////////////////
+///////////////////////////////////////////////////////////////
+
 const buttonCreate = document.querySelector(".new-place__submit");
 const elements = document.querySelector(".elements__cards");
 
 function renderCard() {
-  const renderedCards = initialCards;
-  elements.innerHTML = "";
-  for (let i = 0; i < renderedCards.length; i++) {
-    const template = document.getElementById("elements__template-card").content.cloneNode(true);
-    template.querySelector(".elements__image").addEventListener("click", function openImagePopup(){
-      document.querySelector(".image-popup__content").src = renderedCards[i].link;
-      document.querySelector(".image-popup__title").textContent = renderedCards[i].name;
-      document.querySelector(".image-popup").classList.remove("image-popup_hidden")
-    })
-    template.querySelector(".elements__text").textContent = renderedCards[i].name;
-    template.querySelector(".elements__image").src = renderedCards[i].link;
-    template.querySelector(".elements__delete").addEventListener("click",function removeCard(i){
-        renderedCards.splice(i,1) //remove do array
-        this.parentNode.remove() //remove do visual
-      }
-    )
-    heart = template.querySelector(".elements__heart");
-    if(initialCards[i].heart){
-      heart.classList.add("elements__heart_active")
-    }
+  elements.innerHTML = ""; // Limpa o contêiner de cards
 
-    heart.addEventListener("click", function heartToggle() {
-      renderedCards[i].heart = !renderedCards[i].heart;  // Alterna 'heart' no array
-      renderedCards[i].heart = this.classList.toggle("elements__heart_active")
+  for (let i = 0; i < initialCards.length; i++) {
+    const template = document.getElementById("elements__template-card").content.cloneNode(true);
+
+    // Define o texto e a imagem do card
+    // Adiciona evento para abrir o popup da imagem
+    template.querySelector(".elements__image").addEventListener("click", function openImagePopup() {
+      document.querySelector(".image-popup__content").src = initialCards[i].link;
+      document.querySelector(".image-popup__title").textContent = initialCards[i].name;
+      document.querySelector(".image-popup").classList.remove("image-popup_hidden");
     });
     
-      
+    template.querySelector(".elements__text").textContent = initialCards[i].name;
+    template.querySelector(".elements__image").src = initialCards[i].link;
+    
+    // Evento para deletar o card
+    template.querySelector(".elements__delete").addEventListener("click", function () {
+      initialCards.splice(i, 1); // Remove o card do array
+      renderCard(); // Re-renderiza os cards
+    });
+
+    // Configura o botão de "curtir" (heart)
+    const heart = template.querySelector(".elements__heart");
+    if (initialCards[i].heart) {
+      heart.classList.add("elements__heart_active");
+    }
+    heart.addEventListener("click", function () {
+      // Alterna o estado 'heart' no array e atualiza a classe visual
+      initialCards[i].heart = !initialCards[i].heart;
+      heart.classList.toggle("elements__heart_active");
+    });
     
     elements.prepend(template);
   }
 }
+
 
 function addCard(){
   const cardName = document.getElementById("place-title").value;
