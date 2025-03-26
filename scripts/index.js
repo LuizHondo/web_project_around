@@ -58,11 +58,12 @@ openNewPlaceButton.addEventListener("click", toggleNewPlace);
 //////////////// adiciona o image popup close button ///////
 ///////////////////////////////////////////////////////////
 
-function closeImagePopup(){
-  document.querySelector(".image-popup").classList.add("image-popup_hidden")
+function closeImagePopup() {
+  document.querySelector(".image-popup").classList.add("image-popup_hidden");
 }
 
-document.querySelector(".image-popup__close-button").addEventListener("click", closeImagePopup)
+const imageCloseButton = document.querySelector(".image-popup__close-button");
+imageCloseButton.addEventListener("click", closeImagePopup);
 
 ////////////////////////////////////////////////////////////////////////
 ///////////////// Elementos iniciais do Array ///////////////////
@@ -111,60 +112,69 @@ const elements = document.querySelector(".elements__cards");
 function renderCard() {
   elements.innerHTML = ""; // Limpa o contêiner de cards
 
-  for (let i = 0; i < initialCards.length; i++) {
-    const template = document.getElementById("elements__template-card").content.cloneNode(true);
+  initialCards.forEach((card, i) => {
+    const template = document
+      .getElementById("elements__template-card")
+      .content.cloneNode(true);
+
+    // Adiciona evento para abrir o popup da imagem
+    template
+      .querySelector(".elements__image")
+      .addEventListener("click", function openImagePopup() {
+        document.querySelector(".image-popup__content").src = card.link;
+        document.querySelector(".image-popup__title").textContent = card.name;
+        document
+          .querySelector(".image-popup")
+          .classList.remove("image-popup_hidden");
+      });
 
     // Define o texto e a imagem do card
-    // Adiciona evento para abrir o popup da imagem
-    template.querySelector(".elements__image").addEventListener("click", function openImagePopup() {
-      document.querySelector(".image-popup__content").src = initialCards[i].link;
-      document.querySelector(".image-popup__title").textContent = initialCards[i].name;
-      document.querySelector(".image-popup").classList.remove("image-popup_hidden");
-    });
-    
-    template.querySelector(".elements__text").textContent = initialCards[i].name;
-    template.querySelector(".elements__image").src = initialCards[i].link;
-    
+    template.querySelector(".elements__text").textContent = card.name;
+    template.querySelector(".elements__image").src = card.link;
+
     // Evento para deletar o card
-    template.querySelector(".elements__delete").addEventListener("click", function () {
-      initialCards.splice(i, 1); // Remove o card do array
-      renderCard(); // Re-renderiza os cards
-    });
+    template
+      .querySelector(".elements__delete")
+      .addEventListener("click", function () {
+        initialCards.splice(i, 1); // Remove o card do array
+        renderCard(); // Re-renderiza os cards
+      });
 
     // Configura o botão de "curtir" (heart)
     const heart = template.querySelector(".elements__heart");
-    if (initialCards[i].heart) {
+    if (card.heart) {
       heart.classList.add("elements__heart_active");
     }
+
+    // Alterna o estado "curtido" no array e atualiza a classe visual
     heart.addEventListener("click", function () {
-      // Alterna o estado 'heart' no array e atualiza a classe visual
-      initialCards[i].heart = !initialCards[i].heart;
+      card.heart = !card.heart;
       heart.classList.toggle("elements__heart_active");
     });
-    
+
+    // Adiciona o card ao contêiner
     elements.prepend(template);
-  }
+  });
 }
 
-
-function addCard(){
+function addCard() {
   const cardName = document.getElementById("place-title").value;
   const cardLink = document.getElementById("place-link").value;
   initialCards.push({
     name: cardName,
     link: cardLink,
-    heart: false
-  }) // Adiciona o card ao array
-  
-  
+    heart: false,
+  }); // Adiciona o card ao array
+
   toggleNewPlace();
   renderCard(); //Re renderiza os cards
   document.getElementById("place-title").value = ""; // Limpa o input
   document.getElementById("place-link").value = ""; // Limpa o input
-
 }
 
-
-buttonCreate.addEventListener("click",addCard)
+buttonCreate.addEventListener("click", function (event) {
+  event.preventDefault(); // Impede o recarregamento da página
+  addCard(); // Adiciona o card
+});
 
 renderCard();
