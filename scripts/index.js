@@ -106,7 +106,7 @@ const initialCards = [
 ////////////////// Renderizador de cartoes///////////////////////////
 ///////////////////////////////////////////////////////////////
 
-const buttonCreate = document.querySelector(".new-place__submit");
+const formCreateNewPlace = document.querySelector(".new-place__form");
 const elements = document.querySelector(".elements__cards");
 
 function renderCard() {
@@ -172,7 +172,7 @@ function addCard() {
   document.getElementById("place-link").value = ""; // Limpa o input
 }
 
-buttonCreate.addEventListener("click", function (event) {
+formCreateNewPlace.addEventListener("submit", function (event) {
   event.preventDefault(); // Impede o recarregamento da página
   addCard(); // Adiciona o card
 });
