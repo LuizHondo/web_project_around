@@ -27,6 +27,7 @@ function setElements(evt) {
 // Abre e fecha Popup
 function openPopup() {
   popup.classList.remove("popup_hidden");
+  inputFormHandler(profileForm)
   getElements();
 }
 
@@ -47,12 +48,16 @@ profileForm.addEventListener("submit", setElements);
 const newPlace = document.querySelector(".new-place");
 const newPlaceCloseButton = document.querySelector(".new-place__close-button");
 const openNewPlaceButton = document.querySelector(".profile__add-button");
-function toggleNewPlace() {
-  newPlace.classList.toggle("new-place_hidden");
+function openNewPlace() {
+  newPlace.classList.remove("new-place_hidden");
+  inputFormHandler(formNewPlace)
+}
+function closeNewPlace() {
+  newPlace.classList.add("new-place_hidden");
 }
 
-newPlaceCloseButton.addEventListener("click", toggleNewPlace);
-openNewPlaceButton.addEventListener("click", toggleNewPlace);
+newPlaceCloseButton.addEventListener("click", closeNewPlace);
+openNewPlaceButton.addEventListener("click", openNewPlace);
 
 /////////////////////////////////////////////////////////////
 //////////////// adiciona o image popup close button ///////
@@ -106,7 +111,7 @@ const initialCards = [
 ////////////////// Renderizador de cartoes///////////////////////////
 ///////////////////////////////////////////////////////////////
 
-const formCreateNewPlace = document.querySelector(".new-place__form");
+const formNewPlace = document.querySelector(".new-place__form");
 const elements = document.querySelector(".elements__cards");
 
 function renderCard() {
@@ -158,23 +163,62 @@ function renderCard() {
 }
 
 function addCard() {
-  const cardName = document.getElementById("place-title").value;
-  const cardLink = document.getElementById("place-link").value;
+  const cardName = document.getElementById("new-place_title").value;
+  const cardLink = document.getElementById("new-place_link").value;
   initialCards.push({
     name: cardName,
     link: cardLink,
     heart: false,
   }); // Adiciona o card ao array
 
-  toggleNewPlace();
+  closeNewPlace();
   renderCard(); //Re renderiza os cards
-  document.getElementById("place-title").value = ""; // Limpa o input
-  document.getElementById("place-link").value = ""; // Limpa o input
+  document.getElementById("new-place_title").value = ""; // Limpa o input
+  document.getElementById("new-place_link").value = ""; // Limpa o input
 }
 
-formCreateNewPlace.addEventListener("submit", function (event) {
+formNewPlace.addEventListener("submit", function (event) {
   event.preventDefault(); // Impede o recarregamento da página
   addCard(); // Adiciona o card
 });
 
 renderCard();
+
+////////////////////////////////////////////////////////
+//////////////  Validador de formulários  ////////////
+////////////////////////////////////////////////////////
+function inputValidator(evt){
+  const inputElement = evt.target; // invoca o elemento onde ocorreu o evento
+  const span = inputElement.nextElementSibling; // invoca o próximo elemento irmão, no caso, span
+  if(!inputElement.validity.valid){
+    span.textContent = inputElement.validationMessage;
+
+  }
+  else{
+    span.textContent = ""
+  }
+
+}
+
+function formValidator(evt){
+  const form = evt.target.closest("form");
+  const submitButton = form.querySelector("button[type='submit']")
+  console.log(form.checkValidity())
+  if (form.checkValidity()){
+    submitButton.classList.remove(submitButton.classList[0]+"_inactive")
+  }
+  else {submitButton.classList.add(submitButton.classList[0]+"_inactive")
+  }
+}
+
+//para o input handler e form validator funcionarem, os inputs devem estar em uma div com os spans; A primeira classe do input deve ter o mesmo nome da classe do span, + -validator; O button submit deve ser button, ter o type submit, e sua classe inativa deve ser nomeDoButton+_inactive;
+
+function inputFormHandler(form){
+  const inputs = Array.from(form.querySelectorAll("input"));
+    inputs.forEach((input) =>{
+      input.addEventListener("input",inputValidator)
+      input.addEventListener("input",formValidator)
+    }
+  )
+
+}
