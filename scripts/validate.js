@@ -7,10 +7,10 @@ export function enableValidation(config) {
     input.addEventListener("input", function () {
       if (form.checkValidity()) {
         submitButton.classList.remove(config.inactiveButtonClass);
-        form.querySelector(`#${input.id}_error`).textContent = "";
+        form.querySelector(`#${input.id}-error`).textContent = "";
       } else {
         submitButton.classList.add(config.inactiveButtonClass);
-        form.querySelector(`#${input.id}_error`).textContent =
+        form.querySelector(`#${input.id}-error`).textContent =
           input.validationMessage;
       }
     });
