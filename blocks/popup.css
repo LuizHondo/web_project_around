@@ -62,16 +62,7 @@
 .popup__form-elements:invalid {
   border-bottom: 1px solid rgba(255, 0, 0, 0.3);
 }
-.popup__form-error {
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: red;
-}
-
-.popup__form-elements-error {
+.popup__form-elements_error {
   color: red;
   font-family: Inter;
   font-weight: 400;
