@@ -66,14 +66,12 @@
   border-bottom: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-#new-place_title_error {
-  margin: 0;
-  color: red;
-  padding-top: 0px;
-}
-#new-place_link_error {
-  margin-top: 0px;
-  border-color: red;
+.new-place_input_error {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
   color: red;
 }
 .new-place__submit {
