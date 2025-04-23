@@ -71,8 +71,8 @@
           />
           <form class="popup__form">
             <p class="popup__text">Editar perfil</p>
-              <div class="popup__form-element-container">
-                <input
+            <div class="popup__form-element-container">
+              <input
                 id="name"
                 type="text"
                 minlength="2"
@@ -80,22 +80,23 @@
                 class="popup__form-elements popup__form-element-name"
                 placeholder="Nome"
                 required
-                />
-                <span class="popup__form-error" id="name-validator"></span>
-              </div>
+              />
+              <span class="popup__form_error" id="name_error"></span>
+            </div>
 
-            
-              <div class="popup__form-element-container">
-                <input
-                  id="description"
-                  type="text"
-                  class="popup__form-elements popup__form-element-description"
-                  placeholder="Sobre mim"
-                  required
-                />
-                <span class="popup__form-error" id="description-validator"></span>
-              </div>
-            <button type="submit" aria-label="Salvar" class="popup__submit">Salvar</button>
+            <div class="popup__form-element-container">
+              <input
+                id="description"
+                type="text"
+                class="popup__form-elements popup__form-element-description"
+                placeholder="Sobre mim"
+                required
+              />
+              <span class="popup__form_error" id="description_error"></span>
+            </div>
+            <button type="submit" aria-label="Salvar" class="popup__submit">
+              Salvar
+            </button>
           </form>
         </div>
       </section>
@@ -118,7 +119,10 @@
                 maxlength="30"
                 required
               />
-              <span id="new-place_title-validator"></span>
+              <span
+                class="new-place_input-error"
+                id="new-place_title_error"
+              ></span>
             </div>
             <div class="new-place__form-elements-container">
               <input
@@ -128,9 +132,16 @@
                 placeholder="Link da Imagem"
                 required
               />
-              <span id="new-place_link-validator"></span>
+              <span
+                class="new-place_input-error"
+                id="new-place_link_error"
+              ></span>
             </div>
-            <button type="submit" aria-label="Salvar" class="new-place__submit new-place__submit_inactive">
+            <button
+              type="submit"
+              aria-label="Salvar"
+              class="new-place__submit new-place__submit_inactive"
+            >
               Salvar
             </button>
           </form>

@@ -46,7 +46,7 @@
   line-height: 100%;
   letter-spacing: 0%;
 }
-.new-place__form-elements-container{
+.new-place__form-elements-container {
   display: flex;
   flex-flow: column;
   gap: 5px;
@@ -62,16 +62,16 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-.new-place__form-elements:invalid:focus{
-  border-bottom: red solid 1px;
+.new-place__form-elements:invalid {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-#new-place_title-validator{
+#new-place_title_error {
   margin: 0;
   color: red;
   padding-top: 0px;
 }
-#new-place_link-validator{
+#new-place_link_error {
   margin-top: 0px;
   border-color: red;
   color: red;
@@ -94,10 +94,10 @@
 .new-place__submit:hover {
   opacity: 80%;
 }
-.new-place__submit_inactive{
+.new-place__submit_inactive {
   background-color: #fff;
-  color:#000;
-  opacity:20%;
+  color: #000;
+  opacity: 20%;
 }
 
 @media screen and (max-width: 768px) {

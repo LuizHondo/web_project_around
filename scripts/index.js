@@ -27,7 +27,12 @@ function setElements(evt) {
 // Abre e fecha Popup
 function openPopup() {
   popup.classList.remove("popup_hidden");
-  inputFormHandler(profileForm)
+  enableValidation({
+    formSelector: ".popup__form",
+    inputSelector: ".popup__form-elements",
+    submitButtonSelector: ".popup__submit",
+    inactiveButtonClass: "popup__submit_inactive",
+  });
   getElements();
 }
 
@@ -50,7 +55,12 @@ const newPlaceCloseButton = document.querySelector(".new-place__close-button");
 const openNewPlaceButton = document.querySelector(".profile__add-button");
 function openNewPlace() {
   newPlace.classList.remove("new-place_hidden");
-  inputFormHandler(formNewPlace)
+  enableValidation({
+    formSelector: ".new-place__form",
+    inputSelector: ".new-place__form-elements",
+    submitButtonSelector: ".new-place__submit",
+    inactiveButtonClass: "new-place__submit_inactive",
+  });
 }
 function closeNewPlace() {
   newPlace.classList.add("new-place_hidden");
@@ -184,41 +194,23 @@ formNewPlace.addEventListener("submit", function (event) {
 
 renderCard();
 
+//////////////////////////////////////////////////////////
+//////////////  Validador de formulários  ///////////////
 ////////////////////////////////////////////////////////
-//////////////  Validador de formulários  ////////////
-////////////////////////////////////////////////////////
-function inputValidator(evt){
-  const inputElement = evt.target; // invoca o elemento onde ocorreu o evento
-  const span = inputElement.nextElementSibling; // invoca o próximo elemento irmão, no caso, span
-  if(!inputElement.validity.valid){
-    span.textContent = inputElement.validationMessage;
+function enableValidation(config) {
+  const form = document.querySelector(config.formSelector);
+  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+  const submitButton = form.querySelector(config.submitButtonSelector);
 
-  }
-  else{
-    span.textContent = ""
-  }
-
-}
-
-function formValidator(evt){
-  const form = evt.target.closest("form");
-  const submitButton = form.querySelector("button[type='submit']")
-  console.log(form.checkValidity())
-  if (form.checkValidity()){
-    submitButton.classList.remove(submitButton.classList[0]+"_inactive")
-  }
-  else {submitButton.classList.add(submitButton.classList[0]+"_inactive")
-  }
-}
-
-//para o input handler e form validator funcionarem, os inputs devem estar em uma div com os spans; A primeira classe do input deve ter o mesmo nome da classe do span, + -validator; O button submit deve ser button, ter o type submit, e sua classe inativa deve ser nomeDoButton+_inactive;
-
-function inputFormHandler(form){
-  const inputs = Array.from(form.querySelectorAll("input"));
-    inputs.forEach((input) =>{
-      input.addEventListener("input",inputValidator)
-      input.addEventListener("input",formValidator)
-    }
-  )
-
+  inputs.forEach((input) => {
+    input.addEventListener("input", function () {
+      if (form.checkValidity()) {
+        submitButton.classList.remove(config.inactiveButtonClass);
+      } else {
+        submitButton.classList.add(config.inactiveButtonClass);
+        form.querySelector(`#${input.id}_error`).textContent =
+          input.validationMessage;
+      }
+    });
+  });
 }

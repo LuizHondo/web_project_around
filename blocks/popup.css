@@ -44,7 +44,7 @@
   letter-spacing: 0%;
   margin: 0;
 }
-.popup__form-element-container{
+.popup__form-element-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -59,10 +59,10 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-.popup__form-elements:invalid{
+.popup__form-elements:invalid {
   border-bottom: 1px solid rgba(255, 0, 0, 0.3);
 }
-.popup__form_error{
+.popup__form_error {
   font-family: Inter;
   font-weight: 400;
   font-size: 12px;
@@ -70,16 +70,7 @@
   letter-spacing: 0%;
   color: red;
 }
-#name-validator{
-  margin: 0;
-  color: red;
-  padding-top: 0px;
-}
-#description-validator{
-  margin-top: 0px;
-  border-color: red;
-  color: red;
-}
+
 .popup__submit {
   cursor: pointer;
   font-family: Inter;
@@ -95,7 +86,15 @@
   width: calc(100%-248px);
   border-radius: 2px;
 }
-.popup__submit_inactive{
+.popup__form_error {
+  color: red;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.popup__submit_inactive {
   opacity: 20%;
   background-color: #fff;
   color: black;
