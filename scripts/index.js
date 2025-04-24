@@ -29,12 +29,6 @@ function setElements(evt) {
 // Abre e fecha Popup
 function openPopup() {
   popup.classList.remove("popup_hidden");
-  enableValidation({
-    formSelector: ".popup__form",
-    inputSelector: ".popup__form-elements",
-    submitButtonSelector: ".popup__submit",
-    inactiveButtonClass: "popup__submit_inactive",
-  });
   getElements();
 }
 
@@ -57,12 +51,6 @@ const newPlaceCloseButton = document.querySelector(".new-place__close-button");
 const openNewPlaceButton = document.querySelector(".profile__add-button");
 function openNewPlace() {
   newPlace.classList.remove("new-place_hidden");
-  enableValidation({
-    formSelector: ".new-place__form",
-    inputSelector: ".new-place__form-elements",
-    submitButtonSelector: ".new-place__submit",
-    inactiveButtonClass: "new-place__submit_inactive",
-  });
 }
 function closeNewPlace() {
   newPlace.classList.add("new-place_hidden");
@@ -195,3 +183,15 @@ formNewPlace.addEventListener("submit", function (event) {
 });
 
 renderCard();
+enableValidation({
+  formSelector: ".new-place__form",
+  inputSelector: ".new-place__form-elements",
+  submitButtonSelector: ".new-place__submit",
+  inactiveButtonClass: "new-place__submit_inactive",
+});
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-elements",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_inactive",
+});

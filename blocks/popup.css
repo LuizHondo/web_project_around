@@ -62,7 +62,7 @@
 .popup__form-elements:invalid {
   border-bottom: 1px solid rgba(255, 0, 0, 0.3);
 }
-.popup__form-elements_error {
+.popup__form-error {
   color: red;
   font-family: Inter;
   font-weight: 400;
