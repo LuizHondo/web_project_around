@@ -7,21 +7,29 @@ export class FormValidator{
     this._inactiveButtonClass = this._config.inactiveButtonClass;
 
   }
-  _getValidation(){
+  _toggleSubmitButton(){
+    if (this._form.checkValidity()) {
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+    }
+    else{
+      this._submitButton.classList.add(this._inactiveButtonClass);
+    }
+  }
+  _eventListenerHandler(){
     this._inputs.forEach((input) => {
       input.addEventListener("input", () => {
+        const errorElement = this._form.querySelector(`#${input.id}-error`) 
         if (this._form.checkValidity()) {
-          this._submitButton.classList.remove(this._inactiveButtonClass);
-          this._form.querySelector(`#${input.id}-error`).textContent = "";
+          errorElement.textContent = "";
         } else {
-          this._submitButton.classList.add(this._inactiveButtonClass);
-          this._form.querySelector(`#${input.id}-error`).textContent = input.validationMessage;
+          errorElement.textContent = input.validationMessage;
         }
+        this._toggleSubmitButton
       });
     })
   }
   enableValidation(){
-    return this._getValidation()
+    return this._eventListenerHandler()
   }
 
 }
