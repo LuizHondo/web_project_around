@@ -24,7 +24,7 @@ export class FormValidator{
         } else {
           errorElement.textContent = input.validationMessage;
         }
-        this._toggleSubmitButton
+        this._toggleSubmitButton()
       });
     })
   }
