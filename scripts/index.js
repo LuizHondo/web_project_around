@@ -1,4 +1,5 @@
-import { enableValidation } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js"
 
 //////////////////////////////////////////////////////////////////
 /////////////////// Editar nome e descricao /////////////////////
@@ -118,47 +119,9 @@ function renderCard() {
   elements.innerHTML = ""; // Limpa o contêiner de cards
 
   initialCards.forEach((card, i) => {
-    const template = document
-      .getElementById("elements__template-card")
-      .content.cloneNode(true);
-
-    // Adiciona evento para abrir o popup da imagem
-    template
-      .querySelector(".elements__image")
-      .addEventListener("click", function openImagePopup() {
-        document.querySelector(".image-popup__content").src = card.link;
-        document.querySelector(".image-popup__title").textContent = card.name;
-        document
-          .querySelector(".image-popup")
-          .classList.remove("image-popup_hidden");
-      });
-
-    // Define o texto e a imagem do card
-    template.querySelector(".elements__text").textContent = card.name;
-    template.querySelector(".elements__image").src = card.link;
-
-    // Evento para deletar o card
-    template
-      .querySelector(".elements__delete")
-      .addEventListener("click", function () {
-        initialCards.splice(i, 1); // Remove o card do array
-        renderCard(); // Re-renderiza os cards
-      });
-
-    // Configura o botão de "curtir" (heart)
-    const heart = template.querySelector(".elements__heart");
-    if (card.heart) {
-      heart.classList.add("elements__heart_active");
-    }
-
-    // Alterna o estado "curtido" no array e atualiza a classe visual
-    heart.addEventListener("click", function () {
-      card.heart = !card.heart;
-      heart.classList.toggle("elements__heart_active");
-    });
-
+    const template = new Card(card.name,card.link,"elements__template-card")
     // Adiciona o card ao contêiner
-    elements.prepend(template);
+    elements.prepend(template.getCard());
   });
 }
 
@@ -170,7 +133,7 @@ function addCard() {
     link: cardLink,
     heart: false,
   }); // Adiciona o card ao array
-
+  
   closeNewPlace();
   renderCard(); //Re renderiza os cards
   document.getElementById("new-place_title").value = ""; // Limpa o input
@@ -183,15 +146,38 @@ formNewPlace.addEventListener("submit", function (event) {
 });
 
 renderCard();
-enableValidation({
-  formSelector: ".new-place__form",
-  inputSelector: ".new-place__form-elements",
-  submitButtonSelector: ".new-place__submit",
-  inactiveButtonClass: "new-place__submit_inactive",
-});
-enableValidation({
-  formSelector: ".popup__form",
+// enableValidation({
+//   formSelector: ".new-place__form",
+//   inputSelector: ".new-place__form-elements",
+//   submitButtonSelector: ".new-place__submit",
+//   inactiveButtonClass: "new-place__submit_inactive",
+// });
+// enableValidation({
+//   formSelector: ".popup__form",
+//   inputSelector: ".popup__form-elements",
+//   submitButtonSelector: ".popup__submit",
+//   inactiveButtonClass: "popup__submit_inactive",
+// });
+
+
+
+const newPlaceForm = document.querySelector(".new-place__form");
+const popupForm = document.querySelector(".popup__form");
+
+
+const newPlaceValidator = new FormValidator(
+  {
+    inputSelector: ".new-place__form-elements",
+    submitButtonSelector: ".new-place__submit",
+    inactiveButtonClass: "new-place__submit_inactive",}
+  ,newPlaceForm);
+newPlaceValidator.enableValidation();
+
+const popupValidator = new FormValidator({
   inputSelector: ".popup__form-elements",
   submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_inactive",
-});
+  inactiveButtonClass: "popup__submit_inactive",}
+  ,popupForm);
+popupValidator.enableValidation();
+
+
