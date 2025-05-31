@@ -17,7 +17,14 @@ Uma aplicação web responsiva que exibe informações de perfil, publicações 
 ├── pages/
 │   ├── index.css        # Estilos gerais do site
 ├── scripts/
-│   ├── index.js         # Interatividade (JS)
+│   ├── Card.js          # Classe para representar os cartões de publicações
+│   ├── FormValidator.js   # Classe para validar formulários
+│   ├── Popup.js         # Classe base para popups
+│   ├── PopupWithForm.js # Classe para popups com formulário
+│   ├── PopupWithImage.js # Classe para popups com imagem
+│   ├── Section.js       # Classe para renderizar listas de elementos
+│   ├── UserInfo.js      # Classe para gerenciar informações do usuário
+│   ├── index.js         # Interatividade principal (JS) e inicialização das classes
 ├── vendor/              # Dependências externas
 │   ├── fonts/           # Pacotes de fontes
 │   ├── fonts.css        # Estilos de fontes
