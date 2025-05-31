@@ -46,7 +46,12 @@ function renderCard() {
   elements.innerHTML = ""; // Limpa o contêiner de cards
 
   initialCards.forEach((card, i) => {
-    const template = new Card(card.name,card.link,"elements__template-card")
+    const template = new Card(card.name, card.link, "elements__template-card", (name, link) => {
+      document.querySelector(".image-popup__title").textContent = name;
+      document.querySelector(".image-popup__content").src = link;
+      document.querySelector(".image-popup").classList.remove("image-popup_hidden")
+    })
+
     // Adiciona o card ao contêiner
     elements.prepend(template.getCard());
   });
