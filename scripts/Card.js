@@ -13,13 +13,13 @@ export class Card{
             .addEventListener("click", () => {
                 this._template.remove()
             });
-        const heart = this._template.querySelector(".elements__heart");
-        if (this.heart){
-            heart.classList.add("elements__heart_active");
+        const isLiked = this._template.querySelector(".elements__heart");
+        if (this.isLiked){
+            isLiked.classList.add("elements__heart_active");
         }
-        heart.addEventListener("click", function () {
-        this.heart = !this.heart;
-        heart.classList.toggle("elements__heart_active");
+        isLiked.addEventListener("click", function () {
+        this.isLiked = !this.isLiked;
+        isLiked.classList.toggle("elements__heart_active");
         });
     }
     

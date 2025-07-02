@@ -1,42 +1,57 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js"
 import { closeNewPlace } from "./utils.js"
+import { Api } from "./Api.js"
+
+
+
 
 const initialCards = [
   {
     name: "Vale de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    heart: false,
+    isLiked: false,
   },
   {
     name: "Lago Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    heart: false,
+    isLiked: false,
   },
   {
     name: "Montanhas Carecas",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-    heart: false,
+    isLiked: false,
   },
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-    heart: false,
+    isLiked: false,
   },
   {
     name: "Parque Nacional da Vanoise ",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-    heart: false,
+    isLiked: false,
   },
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-    heart: false,
+    isLiked: false,
   },
 ];
 
+
+// const api = new Api({
+//   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+//   headers: {
+//     authorization: "4fe3b6e2-c8d9-4e4d-8a1e-c00cea17e8fc",
+//     "Content-Type": "application/json"
+//   }
+// }
+// )
+// const initialCards = api.getInitialCards();
+
 //////////////////////////////////////////////////////////////////////////////
-////////////////// Renderizador de cartoes///////////////////////////
+////////////////// Renderizador de cartões///////////////////////////
 ///////////////////////////////////////////////////////////////
 
 const formNewPlace = document.querySelector(".new-place__form");
@@ -63,7 +78,7 @@ function addCard() {
   initialCards.push({
     name: cardName,
     link: cardLink,
-    heart: false,
+    isLiked: false,
   }); // Adiciona o card ao array
   
   closeNewPlace();
@@ -99,5 +114,3 @@ const popupValidator = new FormValidator({
   inactiveButtonClass: "popup__submit_inactive",}
   ,popupForm);
 popupValidator.enableValidation();
-
-
