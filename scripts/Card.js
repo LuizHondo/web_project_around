@@ -38,16 +38,16 @@ export class Card{
                 api.unlikeCard(this._id)
                 .then(() =>{         
                     this._isLiked = false;
-                    likeButton.classList.remove("elements__heart_active")
+                    this._template.querySelector(".elements__heart").classList.remove("elements__heart_active")
                     }
                 )
-                .catch(()=>console.error("Erro ao descurtir:",err))
+                .catch((err)=>console.error("Erro ao descurtir:",err))
             }
             else{
                 api.likeCard(this._id)
                 .then(()=>{
                     this._isLiked = true;
-                    likeButton.classList.add("elements__heart_active")
+                    this._template.querySelector(".elements__heart").classList.add("elements__heart_active")
                     }
                 )
                 .catch((err)=>console.error("Erro ao curtir:",err))
