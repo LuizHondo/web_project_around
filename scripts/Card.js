@@ -31,10 +31,8 @@ export class Card{
                     then(this._template.remove())
             });
         
-        
-        const likeButton = this._template.querySelector(".elements__heart");
        
-        likeButton.addEventListener("click", () => {
+        this._template.querySelector(".elements__heart").addEventListener("click", () => {
 
             if (this._isLiked){
                 api.unlikeCard(this._id)
