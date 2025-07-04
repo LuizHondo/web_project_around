@@ -64,28 +64,32 @@ export class Api {
   }
   //////// CURTIR
   likeCard(cardId) {
+    console.log("curtiu")
+    
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers
     }).then(this._handleResponse);
   }
-  //////// DESCURTIR
   unlikeCard(cardId) {
+    console.log("descurtiu")
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers
     }).then(this._handleResponse);
   }
+
+
 }
 
 
-const teste = new Api({
-  baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
-  headers: {
-    authorization: "4fe3b6e2-c8d9-4e4d-8a1e-c00cea17e8fc",
-    "Content-Type": "application/json"
-  }
-});
+// const teste = new Api({
+//   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+//   headers: {
+//     authorization: "4fe3b6e2-c8d9-4e4d-8a1e-c00cea17e8fc",
+//     "Content-Type": "application/json"
+//   }
+// });
 
 // teste.addCard({
 //   name: "Para apagar",

@@ -80,7 +80,8 @@ function renderCard() {
     .then((cards) => {
       cards.forEach(
         (card) => {
-          const template = new Card(card.name, card.link, card._id, "elements__template-card", (name, link) => {
+          console.log(card)
+          const template = new Card(card.name, card.link, card._id, card.isLiked ,"elements__template-card", (name, link) => {
           document.querySelector(".image-popup__title").textContent = name;
           document.querySelector(".image-popup__content").src = link;
           document.querySelector(".image-popup").classList.remove("image-popup_hidden")
