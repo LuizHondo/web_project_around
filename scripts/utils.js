@@ -1,8 +1,17 @@
-/// utils.js deve conter os manipuladores de eventos e a função que abre/fecha as janelas modais.
+import { Api } from "./Api.js"
+/// utils.js deve conter os manipuladores de eventos e
+/// a função que abre/fecha as janelas modais.
 
 //////////////////////////////////////////////////////////////////
 /////////////////// Editar nome e descricao /////////////////////
-
+const api = new Api({
+  baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+  headers: {
+    authorization: "4fe3b6e2-c8d9-4e4d-8a1e-c00cea17e8fc",
+    "Content-Type": "application/json"
+  }
+}
+)
 const popup = document.querySelector(".popup");
 const nameInput = document.querySelector("#name");
 const descriptionInput = document.querySelector("#description");
@@ -12,16 +21,28 @@ const popupCloseButton = document.querySelector(".popup__close-button");
 const editButton = document.querySelector(".profile__name-edit-button");
 const profileForm = document.querySelector(".popup__form");
 
+
 export function getElements() {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
+  return api.getUserInfo().then((data)=>{
+     profileName.textContent = data.name;
+     profileDescription.textContent = data.about;
+  })
 }
 
 function setElements(evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = descriptionInput.value;
-  closePopup();
+  const data = {
+    name:nameInput.value,
+    about:descriptionInput.value
+  }
+  api.updateProfile(data).
+    then((res)=>{
+      profileName.textContent = res.name;
+      profileDescription.textContent = res.about;
+      closePopup()
+    })
+  // profileName.textContent = nameInput.value;
+  // profileDescription.textContent = descriptionInput.value;
 }
 
 // Abre e fecha Popup

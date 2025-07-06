@@ -1,6 +1,6 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js"
-import { closeNewPlace } from "./utils.js"
+import { closeNewPlace,getElements } from "./utils.js"
 import { Api } from "./Api.js"
 
 
@@ -116,7 +116,7 @@ formNewPlace.addEventListener("submit", function (event) {
   addCard(); // Adiciona o card
 });
 
-// getElements()
+getElements();
 renderCard();
 
 
