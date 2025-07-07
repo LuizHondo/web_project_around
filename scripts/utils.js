@@ -22,6 +22,7 @@ const editButton = document.querySelector(".profile__name-edit-button");
 const profileForm = document.querySelector(".popup__form");
 
 
+
 export function getElements() {
   return api.getUserInfo().then((data)=>{
      profileName.textContent = data.name;
@@ -84,3 +85,24 @@ function closeImagePopup() {
 
 const imageCloseButton = document.querySelector(".image-popup__close-button");
 imageCloseButton.addEventListener("click", closeImagePopup);
+
+//////// ativa e desativa popup confirma //////
+//////////////////////////////////////////////
+
+const confirmationPopup = document.querySelector(".popup-confirmation");
+const confirmationButton = document.querySelector(".popup-confirmation__button");
+const confirmationCloseButton = document.querySelector(".popup-confirmation__close-button")
+confirmationCloseButton.addEventListener('click',function(){
+  confirmationPopup.classList.remove("popup-confirmation_inactive")
+});
+
+
+export function confirmsDelete(cardId,template){
+  confirmationPopup.classList.remove("popup-confirmation_inactive")
+  confirmationButton.addEventListener('click',function(){api.deleteCard(cardId).
+    then(template.remove()).
+    then(confirmationPopup.classList.add("popup-confirmation_inactive"))
+  }
+  )
+};
+

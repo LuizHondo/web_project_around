@@ -1,4 +1,5 @@
 import { Api } from "./Api.js"
+import { confirmsDelete } from "./utils.js"
 
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
@@ -26,9 +27,10 @@ export class Card{
         
         this._template.querySelector(".elements__delete")
             .addEventListener("click", () => {
+                confirmsDelete(this._id,this._template)
 
-                api.deleteCard(this._id).
-                    then(this._template.remove())
+                // api.deleteCard(this._id).
+                //     then(this._template.remove())
             });
         
        

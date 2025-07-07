@@ -23,7 +23,7 @@
           <img src="images/avatar.png" alt="" class="profile__avatar" />
           <div class="profile__info-text">
             <div class="profile__name">
-              <h1 class="profile__name-text">Luiz</h1>
+              <h1 class="profile__name-text"></h1>
               <button class="profile__name-edit-button" aria-label="Editar">
                 <img
                   src="images/edit-button.png"
@@ -32,7 +32,7 @@
                 />
               </button>
             </div>
-            <p class="profile__description">Desenvolvedor</p>
+            <p class="profile__description"></p>
           </div>
         </div>
         <button class="profile__add-button"></button>
@@ -87,7 +87,6 @@
 
             <div class="popup__form-element-container">
               <input
-              
                 name="description"
                 id="description"
                 type="text"
@@ -163,6 +162,20 @@
             class="image-popup__content"
           />
           <p class="image-popup__title">Sem título</p>
+        </div>
+      </section>
+      <section class="popup-confirmation popup-confirmation_inactive">
+        <div class="popup-confirmation__container">
+          <img
+              src="images/close-button.png"
+              class="popup-confirmation__close-button"
+              alt="Fechar"
+            />
+            
+            <p class="popup-confirmation__text">Tem certeza?</p>
+            <button type="submit" aria-label="Salvar" class="popup-confirmation__button">
+              Sim
+            </button>
         </div>
       </section>
     </div>

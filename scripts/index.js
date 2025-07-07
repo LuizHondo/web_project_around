@@ -3,43 +3,6 @@ import { Card } from "./Card.js"
 import { closeNewPlace,getElements } from "./utils.js"
 import { Api } from "./Api.js"
 
-
-
-
-// const initialCards = [
-//   {
-//     name: "Vale de Yosemite",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-//     isLiked: false,
-//   },
-//   {
-//     name: "Lago Louise",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-//     isLiked: false,
-//   },
-//   {
-//     name: "Montanhas Carecas",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-//     isLiked: false,
-//   },
-//   {
-//     name: "Latemar",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-//     isLiked: false,
-//   },
-//   {
-//     name: "Parque Nacional da Vanoise ",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-//     isLiked: false,
-//   },
-//   {
-//     name: "Lago di Braies",
-//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-//     isLiked: false,
-//   },
-// ];
-
-
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
@@ -50,28 +13,6 @@ const api = new Api({
 )
 
 
-
-//////////////////////////////////////////////////////////////////////////////
-////////////////// Renderizador de cartões///////////////////////////
-///////////////////////////////////////////////////////////////
-
-// const formNewPlace = document.querySelector(".new-place__form");
-// const elements = document.querySelector(".elements__cards");
-
-// function renderCard() {
-//   elements.innerHTML = ""; // Limpa o contêiner de cards
-
-//   initialCards.forEach((card) => {
-//     const template = new Card(card.name, card.link, "elements__template-card", (name, link) => {
-//       document.querySelector(".image-popup__title").textContent = name;
-//       document.querySelector(".image-popup__content").src = link;
-//       document.querySelector(".image-popup").classList.remove("image-popup_hidden")
-//     })
-
-//     // Adiciona o card ao contêiner
-//     elements.prepend(template.getCard());
-//   });
-// }
 const formNewPlace = document.querySelector(".new-place__form");
 const elements = document.querySelector(".elements__cards");
 
@@ -139,7 +80,3 @@ const popupValidator = new FormValidator({
   ,popupForm);
 popupValidator.enableValidation();
 
-/// acho que falta eu colocar o alternador 
-// de like para mudar o estado do isLiked
-//  para false e de tentar identificar
-//  e apagar o card
