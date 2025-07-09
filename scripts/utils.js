@@ -27,6 +27,7 @@ export function getElements() {
   return api.getUserInfo().then((data)=>{
      profileName.textContent = data.name;
      profileDescription.textContent = data.about;
+     avatar.src = data.avatar;
   })
 }
 
@@ -99,10 +100,47 @@ confirmationCloseButton.addEventListener('click',function(){
 
 export function confirmsDelete(cardId,template){
   confirmationPopup.classList.remove("popup-confirmation_inactive")
-  confirmationButton.addEventListener('click',function(){api.deleteCard(cardId).
-    then(template.remove()).
-    then(confirmationPopup.classList.add("popup-confirmation_inactive"))
+  confirmationButton.addEventListener('click',function(){
+    api.deleteCard(cardId).
+      then(template.remove()).
+      then(confirmationPopup.classList.add("popup-confirmation_inactive"))
   }
   )
 };
+
+const avatarPopup = document.querySelector(".popup-avatar");
+const avatarOpenButton = document.querySelector(".profile__avatar-button");
+const avatarCloseButton = document.querySelector(".popup-avatar__close-button");
+const avatarInput = document.querySelector(".popup-avatar__input");
+const avatarSubmit = document.querySelector(".popup-avatar__button");
+const avatar = document.querySelector(".profile__avatar")
+
+avatarOpenButton.addEventListener('click',function(){
+  avatarPopup.classList.remove("popup-avatar_inactive")
+})
+
+avatarCloseButton.addEventListener('click',function(){
+  avatarPopup.classList.add("popup-avatar_inactive")
+  console.log(api.getUserInfo())
+});
+
+avatarSubmit.addEventListener('click',function(){
+  api.updateAvatar(avatarInput.value).then(
+    avatarSubmit.textContent = "Enviando..."
+  ).then(
+    (res)=>{
+      avatar.src = res.avatar
+    }
+  ).then(()=>{
+    avatarPopup.classList.add("popup-avatar_inactive")
+  }).catch((err)=>{
+    avatarSubmit.textContent = "Enviar";
+    console.log(`Erro:${err}`)
+  }
+  ).finally(()=>{
+    avatarSubmit.textContent = "Enviar";
+    avatarInput.value = "";
+  })
+  
+})
 

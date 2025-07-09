@@ -14,11 +14,37 @@
   justify-content: space-between;
   gap: 30px;
 }
+.profile__avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
 .profile__avatar {
   border-radius: 50%;
   width: 120px;
-  height: auto;
+  height: 120px;
+
 }
+
+.profile__avatar-button {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  
+}
+.profile__avatar-button {
+  opacity: 0;
+}
+
+.profile__avatar-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
 .profile__info-text {
   display: flex;
   flex-direction: column;

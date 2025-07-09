@@ -30,8 +30,8 @@ export class Card{
                 confirmsDelete(this._id,this._template)
 
                 // api.deleteCard(this._id).
-                //     then(this._template.remove())
-            });
+                // then(this._template.remove())
+        });
         
        
         this._template.querySelector(".elements__heart").addEventListener("click", () => {

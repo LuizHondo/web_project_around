@@ -64,7 +64,7 @@ export class Api {
   }
   //////// CURTIR
   likeCard(cardId) {
-    console.log("curtiu")
+
     
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
@@ -72,7 +72,6 @@ export class Api {
     }).then(this._handleResponse);
   }
   unlikeCard(cardId) {
-    console.log("descurtiu")
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers
@@ -82,21 +81,3 @@ export class Api {
 
 }
 
-
-// const teste = new Api({
-//   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
-//   headers: {
-//     authorization: "4fe3b6e2-c8d9-4e4d-8a1e-c00cea17e8fc",
-//     "Content-Type": "application/json"
-//   }
-// });
-
-// teste.addCard({
-//   name: "Para apagar",
-//   link: "https://i.pinimg.com/736x/49/15/14/49151459aeca6b39fcd8f5a4230f19a2.jpg"
-// })
-//   .then(data => console.log("Cartão adicionado:", data))
-//   .catch(err => console.error("Erro ao adicionar cartão:", err));
-
-// const getCards = teste.getInitialCards();
-// console.log(getCards)

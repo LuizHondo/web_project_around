@@ -33,17 +33,3 @@ export class FormValidator{
   }
 
 }
-
-
-
-
-
-  /////////TESTE/TESTE
-  // const newPlaceForm = document.querySelector(".new-place__form");  
-  // const teste = new FormValidator({
-  // formSelector: ".new-place__form",
-  // inputSelector: ".new-place__form-elements",
-  // submitButtonSelector: ".new-place__submit",
-  // inactiveButtonClass: "new-place__submit_inactive",
-  // },newPlaceForm)
-  // console.log(teste)

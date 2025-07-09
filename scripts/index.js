@@ -38,18 +38,22 @@ function renderCard() {
 function addCard() {
   const cardName = document.getElementById("new-place_title").value;
   const cardLink = document.getElementById("new-place_link").value;
+  const profileInput = document.querySelector(".popup__submit");
   api.addCard({
     name: cardName,
     link: cardLink,
     isLiked: false
-  }) // Adiciona o card ao array
+  }).then(
+    profileInput.textContent = "Salvando..."
+  )
   .then(() => {
     closeNewPlace()
     renderCard()
     document.getElementById("new-place_title").value = ""; // Limpa o input
     document.getElementById("new-place_link").value = ""; // Limpa o input
   })
-  .catch((err) => {`Erro ao carregar o card: ${err}`});
+  .catch((err) => {`Erro ao carregar o card: ${err}`})
+  .finally(()=>{profileInput.textContent = "Salvar"})
 }
 
 formNewPlace.addEventListener("submit", function (event) {
