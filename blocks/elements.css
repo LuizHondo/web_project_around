@@ -18,20 +18,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.elements__card:hover {
-  cursor: pointer;
+  overflow: hidden;
 }
 .elements__image {
+  
   width: 282px;
   height: 282px;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg");
-  background-size: cover;
+
   background-position: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   object-fit: initial;
 }
+
 .elements__delete {
   padding: 0;
   position: absolute;
